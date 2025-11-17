@@ -1,0 +1,29 @@
+paths:
+  data_root: data
+  raw_root: data/raw
+  processed_root: data/processed
+  duckdb_path: data/bdc_store.duckdb
+  manifest_path: data/bdc_manifest.parquet
+
+ingest:
+  include_extensions: [".tsv", ".zip", ".json", ".htm"]
+  # If empty, discover all immediate subdirectories of raw_root
+  periods: []
+
+build_store:
+  # Optional explicit list of periods; if empty, infer from raw_root
+  periods: []
+  numeric_table_name: numeric_facts
+  # Write per-period cleaned numeric facts as Parquet under processed_root/<period>/
+  write_parquet: true
+  overwrite_parquet: false
+
+models:
+  # Directory for saved models and predictions
+  models_dir: data/processed/models
+  # Target column for forecasting
+  target_col: target_next_qtr_pct
+  # Minimum periods for training in cross-validation
+  min_train_periods: 4
+
+
