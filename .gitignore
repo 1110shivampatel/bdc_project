@@ -1,1 +1,6 @@
-/project_structure.txt
+data/
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+*.duckdb
+project_structure.txt
